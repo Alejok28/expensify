@@ -32,14 +32,8 @@ ActiveRecord::Schema.define(version: 20171019160252) do
   add_index "expenses", ["category_id"], name: "index_expenses_on_category_id"
   add_index "expenses", ["transaktion_id"], name: "index_expenses_on_transaktion_id"
 
-  create_table "transactions", force: :cascade do |t|
-    t.string   "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "transaktions", force: :cascade do |t|
-    t.string   "type"
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

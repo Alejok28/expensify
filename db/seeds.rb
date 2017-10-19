@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+transaktions = ["compra", "retiro", "transferencia", "pago"]
+transaktions.each do |transaktion|
+  Transaktion.create(name: transaktion)
+end
+
+categories = ["carros", "restaurantes", "propiedades", "ocio", "amor"]
+categories.each do |category|
+  Category.create(name: category)
+end
+
+250.times do |expense|
+  Expense.create(concept: Faker::Lorem.sentence,
+    date: Faker::Date.between(1.years.ago, Date.today),
+    amount: Faker::Commerce.price,
+    transaktion_id: Faker::Number.between(1,4),
+    category_id: Faker::Number.between(1,5))
+end
