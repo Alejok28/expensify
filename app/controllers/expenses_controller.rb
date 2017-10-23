@@ -5,6 +5,7 @@ class ExpensesController < ApplicationController
     @expenses = Expense.includes(:transaktion, :category)
     @categories = Category.all
     @transaktions = Transaktion.all
+    @dates = Expense.get_dates.keys
   end
 
   def new
@@ -26,7 +27,15 @@ class ExpensesController < ApplicationController
     @expense.destroy
   end
 
+  def filters
+    @expenses = Expense.filters(filter_params)
+  end
+
   private
+
+  def filter_params
+    params.require(:filters).permit(:date, :category_id, :transaktion_id)
+  end
 
   def expense_params
     params.require(:expense).permit(:concept, :date_transaction, :amount, :category_id, :transaktion_id)

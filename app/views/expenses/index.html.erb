@@ -4,14 +4,14 @@
       <h4 class="filter-header">Tipo de Transacción <span>Selecciona para filtrar</span></h4>
       <div class="list-group filter-type">
         <% @transaktions.each do |transaktion| %>
-          <a href="#" class="list-group-item"><%= transaktion.name %></a>
+          <%= link_to transaktion.name, filters_path(filters: { transaktion_id: transaktion.id }), class: "list-group-item", remote: true %>
         <% end %>
       </div>
 
       <h4 class="filter-header">Categoría <span>Selecciona para filtrar</span></h4>
       <div class="list-group filter-type">
         <% @categories.each do |category| %>
-          <a href="#" class="list-group-item"><%= category.name %></a>
+          <%= link_to category.name, filters_path(filters: { category_id: category.id }), class: "list-group-item", remote: true %>
         <% end %>
       </div>
     </div>
@@ -35,12 +35,7 @@
         <div class="col-md-12">
           <%= link_to '<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Crear Gasto'.html_safe, new_expense_path, class: "btn btn-success pull-left", remote: true  %>
           <h4 class="dropdown pull-right">
-            <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">April 2016 <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu">
-              <li role="presentation"><a href="#">April 2016</a></li>
-              <li role="presentation"><a href="#">March 2016</a></li>
-              <!-- more months -->
-            </ul>
+            <%= select "filter", "date", @dates, {include_blank: "Filtra por Fecha"}, class: "btn btn-success" %>
           </h4>
         </div>
       </div>
@@ -70,4 +65,5 @@
       new DatePicker().initialize_calendar();
     });
   });
+  new Filters();
 </script>
