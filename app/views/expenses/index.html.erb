@@ -33,7 +33,7 @@
 
       <div class="row" style="margin-top: 20px;">
         <div class="col-md-12">
-          <a href="#" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span> New Expense</a>
+          <%= link_to '<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Crear Gasto'.html_safe, new_expense_path, class: "btn btn-success pull-left", remote: true  %>
           <h4 class="dropdown pull-right">
             <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">April 2016 <span class="caret"></span></button>
             <ul class="dropdown-menu" role="menu">
@@ -54,10 +54,20 @@
             <th class="text-right">Valor</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="expenses">
           <%= render @expenses %>
         </tbody>
       </table>
     </div>
   </div>
 </div>
+<div class="modal-window">
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.modal-window').on('datepicker', function() {
+      new DatePicker().initialize_calendar();
+    });
+  });
+</script>

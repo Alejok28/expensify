@@ -1,0 +1,7 @@
+<% if @expense.errors.empty? %>
+  $("#expense-modal-form").modal('hide');
+  $("#expenses").prepend("<%= j render @expense %>");
+  growl("success", "El gasto ha sido creado exitosamente!" );
+<% else %>
+  growl("error", "El gasto no se ha creado debido a un error!" );
+<% end %>

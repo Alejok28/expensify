@@ -1,8 +1,7 @@
-<%= puts expense.inspect %>
-<tr>
+<tr id="expense-<%= expense.id %>">
   <td class="date">
-    <div class="day"><%= expense.date.strftime("%e") %></div>
-    <div class="month"><%= expense.date.strftime("%b") %></div>
+    <div class="day"><%= expense.date_transaction.strftime("%e") %></div>
+    <div class="month"><%= expense.date_transaction.strftime("%b") %></div>
   </td>
   <td>
     <div>
@@ -16,7 +15,7 @@
   <td class="text-right" style="width: 170px;">
     <div class="amount"><%= number_to_currency(expense.amount) %></div>
     <div class="actions">
-      <a href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-      <a href="#"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+      <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_expense_path(expense), remote: true %>
+      <%= link_to '<span class="glyphicon glyphicon-trash"></span> Delete'.html_safe, expense_path(expense), method: :delete, data: {confirm: "Seguro deseas eliminar este gasto?"}, remote:true %>
   </td>
 </tr>

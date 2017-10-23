@@ -1,0 +1,7 @@
+<% if @expense.errors.empty? %>
+  $("#expense-modal-form").modal('hide');
+  $("#expense-<%= @expense.id %>").replaceWith("<%= j render @expense %>");
+  growl("success", "El gasto ha sido actualizado exitosamente!" );
+<% else %>
+  growl("error", "El gasto no se ha actualizado debido a un error!" );
+<% end %>

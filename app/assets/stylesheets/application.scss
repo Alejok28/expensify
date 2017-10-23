@@ -3,6 +3,9 @@
 @import "bootstrap";
 @import "dashboard";
 @import "expenses";
+@import 'jquery-ui/core.css';
+@import 'jquery-ui/datepicker.css';
+@import 'jquery-ui/theme.css';
 
 .navbar-inverse {
   border: 0;
