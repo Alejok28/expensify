@@ -2,6 +2,7 @@ class ExpensesController < ApplicationController
   before_action :set_expenese, only: [:edit, :destroy, :update]
 
   def index
+    @tab = :expenses
     @expenses = filter_params.empty? ? Expense.all : Expense.filters(filter_params)
     @average = Expense.average(@expenses)
     @total = Expense.total(@expenses)
