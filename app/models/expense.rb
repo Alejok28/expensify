@@ -38,10 +38,10 @@ class Expense < ApplicationRecord
   end
 
   def self.average(expenses)
-    expenses.map { |expense| expense[:amount].to_f }.reduce(:+) / expenses.size
+    expenses.empty? ? 0 : expenses.map { |expense| expense[:amount].to_f }.reduce(:+) / expenses.size
   end
 
   def self.total(expenses)
-    expenses.map { |expense| expense[:amount].to_f }.reduce(:+)
+    expenses.empty? ? 0 : expenses.map { |expense| expense[:amount].to_f }.reduce(:+)
   end
 end
