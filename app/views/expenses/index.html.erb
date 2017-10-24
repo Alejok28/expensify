@@ -2,16 +2,16 @@
   <div class="row">
     <div class="col-md-3">
       <h4 class="filter-header">Tipo de Transacción <span>Selecciona para filtrar</span></h4>
-      <div class="list-group filter-type">
+      <div class="list-group filter-type" id="transaktions">
         <% @transaktions.each do |transaktion| %>
-          <%= link_to transaktion.name, filters_path(filters: { transaktion_id: transaktion.id }), class: "list-group-item", remote: true %>
+          <a href="javascript:void(0)" class="list-group-item transaktions" id="transaktion-<%= transaktion.id %>"><%= transaktion.name %></a>
         <% end %>
       </div>
 
       <h4 class="filter-header">Categoría <span>Selecciona para filtrar</span></h4>
-      <div class="list-group filter-type">
+      <div class="list-group filter-type" id="categories">
         <% @categories.each do |category| %>
-          <%= link_to category.name, filters_path(filters: { category_id: category.id }), class: "list-group-item", remote: true %>
+          <a href="javascript:void(0)" class="list-group-item categories" id="category-<%= category.id %>"><%= category.name %></a>
         <% end %>
       </div>
     </div>

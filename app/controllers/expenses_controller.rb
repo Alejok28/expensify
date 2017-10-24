@@ -2,7 +2,7 @@ class ExpensesController < ApplicationController
   before_action :set_expenese, only: [:edit, :destroy, :update]
 
   def index
-    @expenses = Expense.includes(:transaktion, :category)
+    @expenses = filter_params.empty? ? Expense.all : Expense.filters(filter_params)
     @categories = Category.all
     @transaktions = Transaktion.all
     @dates = Expense.get_dates.keys
@@ -27,21 +27,17 @@ class ExpensesController < ApplicationController
     @expense.destroy
   end
 
-  def filters
-    @expenses = Expense.filters(filter_params)
-  end
-
   private
 
-  def filter_params
-    params.require(:filters).permit(:date, :category_id, :transaktion_id)
-  end
+    def filter_params
+      params.permit(:date, :category_id, :transaktion_id)
+    end
 
-  def expense_params
-    params.require(:expense).permit(:concept, :date_transaction, :amount, :category_id, :transaktion_id)
-  end
+    def expense_params
+      params.require(:expense).permit(:concept, :date_transaction, :amount, :category_id, :transaktion_id)
+    end
 
-  def set_expenese
-    @expense = Expense.find(params[:id])
-  end
+    def set_expenese
+      @expense = Expense.find(params[:id])
+    end
 end
