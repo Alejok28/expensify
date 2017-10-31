@@ -3,12 +3,13 @@ class ExpensesController < ApplicationController
 
   def index
     @tab = :expenses
-    @expenses = filter_params.empty? ? Expense.all : Expense.filters(filter_params)
+    @expenses = filter_params.empty? ? Expense.month(Date.current) : Expense.filters(filter_params)
     @average = Expense.average(@expenses)
     @total = Expense.total(@expenses)
     @categories = Category.all
     @transaktions = Transaktion.all
     @dates = Expense.get_dates.keys
+    @expenses = @expenses.order(date_transaction: :asc)
   end
 
   def new

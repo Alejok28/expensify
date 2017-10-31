@@ -35,7 +35,7 @@
         <div class="col-md-12">
           <%= link_to '<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Crear Gasto'.html_safe, new_expense_path, class: "btn btn-success pull-left", remote: true  %>
           <h4 class="dropdown pull-right">
-            <%= select "filter", "date", @dates, {include_blank: "Filtra por Fecha"}, class: "btn btn-success" %>
+            <%= select "filter", "date", @dates, { selected: @dates.last }, class: "btn btn-success" %>
           </h4>
         </div>
       </div>
