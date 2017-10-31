@@ -7,6 +7,13 @@ Rails.application.routes.draw do
   get 'by_category', to: "dashboard#by_category"
   get 'accumulated', to: "dashboard#accumulated"
 
+
+    namespace :api, defaults: {format: 'json'} do
+      namespace :v1 do
+        resources :expenses, except: [:edit, :new, :show]
+      end
+    end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # Serve websocket cable requests in-process

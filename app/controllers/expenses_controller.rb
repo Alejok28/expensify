@@ -1,5 +1,5 @@
 class ExpensesController < ApplicationController
-  before_action :set_expenese, only: [:edit, :destroy, :update]
+  before_action :set_expense, only: [:edit, :destroy, :update]
 
   def index
     @tab = :expenses
@@ -41,7 +41,7 @@ class ExpensesController < ApplicationController
       params.require(:expense).permit(:concept, :date_transaction, :amount, :category_id, :transaktion_id)
     end
 
-    def set_expenese
+    def set_expense
       @expense = Expense.find(params[:id])
     end
 end
