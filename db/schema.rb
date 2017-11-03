@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -27,10 +26,9 @@ ActiveRecord::Schema.define(version: 20171019160252) do
     t.integer  "transaktion_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["category_id"], name: "index_expenses_on_category_id"
+    t.index ["transaktion_id"], name: "index_expenses_on_transaktion_id"
   end
-
-  add_index "expenses", ["category_id"], name: "index_expenses_on_category_id"
-  add_index "expenses", ["transaktion_id"], name: "index_expenses_on_transaktion_id"
 
   create_table "transaktions", force: :cascade do |t|
     t.string   "name"

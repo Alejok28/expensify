@@ -18,7 +18,7 @@ end
 
 300.times do |expense|
   Expense.create(concept: Faker::Lorem.sentence,
-    date_transaction: Faker::Date.between(6.months.ago, Date.today),
+    date_transaction: Faker::Date.between(6.months.ago, Date.today.end_of_month),
     amount: Faker::Commerce.price,
     transaktion_id: Faker::Number.between(1,4),
     category_id: Faker::Number.between(1,5))
