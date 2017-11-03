@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: transaktions
+# Table name: categories
 #
 #  id         :integer          not null, primary key
 #  name       :string
@@ -8,10 +8,9 @@
 #  updated_at :datetime         not null
 #
 
-require 'test_helper'
+require 'rails_helper'
 
-class TransaktionTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+RSpec.describe Category, type: :model do
+  it { should has_many(:expenses) }
+
 end

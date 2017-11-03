@@ -12,18 +12,13 @@
 #  updated_at       :datetime         not null
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+require 'rails_helper'
 
-one:
-  concept: MyString
-  date: 2017-10-19
-  amount: 9.99
-  category: one
-  transaktion: one
+RSpec.describe Expense, type: :model do
+  it { should belong_to(:category) }
+  it { should belong_to(:transaktion) }
+  it { should validate_presence_of(:amount) }
+  it { should validate_presence_of(:date_transaction) }
+  it { should validate_presence_of(:concept) }
 
-two:
-  concept: MyString
-  date: 2017-10-19
-  amount: 9.99
-  category: two
-  transaktion: two
+end
