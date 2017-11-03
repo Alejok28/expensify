@@ -10,6 +10,6 @@
 
 require 'rails_helper'
 
-RSpec.describe Expense, type: :model do
-  it { should has_many(:expenses) }
+RSpec.describe Transaktion, type: :model do
+  it { should have_many(:expenses) }
 end

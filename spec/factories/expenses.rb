@@ -12,3 +12,12 @@
 #  updated_at       :datetime         not null
 #
 
+FactoryBot.define do
+  factory :expense do
+    concept { Faker::Lorem.sentence }
+    date_transaction { Date.current }
+    amount { Faker::Commerce.price }
+    category
+    transaktion
+  end
+end

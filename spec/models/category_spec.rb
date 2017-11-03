@@ -11,6 +11,5 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  it { should has_many(:expenses) }
-
+  it { should have_many(:expenses) }
 end
